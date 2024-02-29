@@ -68,9 +68,11 @@ export default function Home() {
         <link rel="icon" href="/cym-logo.ico" />
       </Head> 
       
-      <div className="mainSection relative">
-        <div className="metaballs absolute w-full h-full pointer-events-none -z-1">
-                <svg className="metasvg" style={{ filter: 'url(#gooify)' , width: '100%', height: '100%',  zIndex: '-1' }}>
+      <div className="mainSection relative flex justify-center items-center">
+
+        {/* background metaball */}
+        <div className="metaballs absolute w-full h-full pointer-events-none z-0">
+                <svg className="metasvg absolute z-0" style={{ filter: 'url(#gooify)' , width: '100%', height: '100%',   }}>
                   <defs>
                     <filter id="gooify" x="-10%" y="-10%" width="120%" height="110%">
                       <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
@@ -102,8 +104,8 @@ export default function Home() {
                   </g>
                 </svg>
               </div>
-             
-        <div className="nav flex justify-around">
+        {/* nav bar */}
+        <div className="nav w-full flex fixed top-0 justify-around">
             {/* nav bar icon */}
               <div className='z-10'>
                 <Link className="navIcon" href="">
@@ -111,7 +113,7 @@ export default function Home() {
                 </Link>
               </div>
               {/* list nav item */}
-              <div className='z-10 mt-6'>
+              <div className='z-10 mt-9'>
                 <Link className="navItem" href="/">About</Link>
                 <Link className="navItem" href="/">2024 Conference</Link>
                 <Link className="navItem" href="/">Get Involved</Link>
@@ -125,10 +127,29 @@ export default function Home() {
                     <div className="knobs"></div>
                     <div className="layer"></div>
                   </div>
-
               </div>
-          </div>
         </div>
+
+        
+        {/* Title section */}
+        {/* 1. Title name 
+        2. Date, time, location 
+        3. Two buttons  */}
+
+        <div className='titleSection relative text-center'>
+            <h1 className='drop-shadow-lg font-bold text-6xl text-[#E1D1ED]'>Connecting Young Minds</h1>
+            <p  className='mt-6 text-lg'>Billigual Research Conference</p>
+            <p  className='text-base'><span className='font-bold'>September 24 - 26, 2024</span> at Ottawa</p>
+            <div className='flex justify-center mt-6'>
+              <button className='registerBtn'>Register</button>
+              <button className='sponsorBtn'>Sponsor</button>
+           </div>
+        </div>
+      </div>
+
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#9771D7" fill-opacity="1" d="M0,96L26.7,90.7C53.3,85,107,75,160,90.7C213.3,107,267,149,320,144C373.3,139,427,85,480,80C533.3,75,587,117,640,144C693.3,171,747,181,800,176C853.3,171,907,149,960,154.7C1013.3,160,1067,192,1120,197.3C1173.3,203,1227,181,1280,160C1333.3,139,1387,117,1413,106.7L1440,96L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z"></path></svg>
+      
     </main>
   );
 }

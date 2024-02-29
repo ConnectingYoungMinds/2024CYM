@@ -1,5 +1,5 @@
 .mainSection{
-    padding-top: 20px;
+    padding-top: 10px;
     height: 100vh; 
     width: 100vw;
     background: linear-gradient(180deg, rgba(89,75,146,1) 0%, rgba(151,113,215,1) 100%);
@@ -104,3 +104,10 @@
   #button-3 .checkbox:checked ~ .layer {
     background-color: #BA8FED;
   }
+
+/* title section */
+.titleSection{
+    color:#fff; 
+    z-index: 100;
+}
+
