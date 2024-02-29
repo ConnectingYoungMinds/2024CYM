@@ -12,8 +12,9 @@
 
 .navItem{
     color:#fff; 
-    padding-left: 4rem;
-    
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
 }
 
   
@@ -111,3 +112,13 @@
     z-index: 100;
 }
 
+/* two button */
+.registerBtn{
+    width:8rem; 
+    height: 2rem;
+}
+
+.sponsorBtn{
+     width:8rem; 
+    height: 2rem;
+}

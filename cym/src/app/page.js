@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from 'next/link'; 
 import { useEffect, useState } from 'react';
 import './main.css'; 
+import Carousel from '@/pages/components/carousel';
 
 export default function Home() {
   const [language, setLanguage] = useState('EN'); // Default language
@@ -13,6 +14,23 @@ export default function Home() {
     setLanguage((language) => (language === 'EN' ? 'FR' : 'EN'));
     // Here you would also handle the actual language switch in your application
   };
+
+  //nav Background control 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
 
   // metaball
   // Set up state for each circle
@@ -107,13 +125,13 @@ export default function Home() {
         {/* nav bar */}
         <div className="nav w-full flex fixed top-0 justify-around">
             {/* nav bar icon */}
-              <div className='z-10'>
+              <div className='z-200'>
                 <Link className="navIcon" href="">
                   <img src="/cymIcon.png" />
                 </Link>
               </div>
               {/* list nav item */}
-              <div className='z-10 mt-9'>
+              <div className= {`z-200 mt-10 mb-9  ${scrolled ? 'rounded-xl bg-purple-300 bg-opacity-25' : ''}`}>
                 <Link className="navItem" href="/">About</Link>
                 <Link className="navItem" href="/">2024 Conference</Link>
                 <Link className="navItem" href="/">Get Involved</Link>
@@ -136,19 +154,24 @@ export default function Home() {
         2. Date, time, location 
         3. Two buttons  */}
 
-        <div className='titleSection relative text-center'>
-            <h1 className='drop-shadow-lg font-bold text-6xl text-[#E1D1ED]'>Connecting Young Minds</h1>
+        <div className='titleSection relative text-center w-full'>
+            <h1 className='z-10 drop-shadow-lg font-bold text-6xl text-[#E1D1ED]'>Connecting Young Minds</h1>
             <p  className='mt-6 text-lg'>Billigual Research Conference</p>
             <p  className='text-base'><span className='font-bold'>September 24 - 26, 2024</span> at Ottawa</p>
             <div className='flex justify-center mt-6'>
-              <button className='registerBtn'>Register</button>
-              <button className='sponsorBtn'>Sponsor</button>
+              <button className='transition duration-500 ease-in-out registerBtn transition duration-700 ease-in-out mx-8 drop-shadow-lg rounded-md  bg-[#6C3FC5] transform hover:-translate-y-1 hover:scale-110 '><p className='font-bold'>Register</p></button>
+              <button className='transition duration-500 ease-in-out sponsorBtn mx-8 drop-shadow-lg rounded-md  bg-[#fff] transform hover:-translate-y-1 hover:scale-110'><p className='font-bold text-[#6C3FC5]'>Sponsor</p></button>
            </div>
         </div>
       </div>
 
+      <div className='bottom-0  w-full'>
+           <Carousel></Carousel>
+        </div>
+
+
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#9771D7" fill-opacity="1" d="M0,96L26.7,90.7C53.3,85,107,75,160,90.7C213.3,107,267,149,320,144C373.3,139,427,85,480,80C533.3,75,587,117,640,144C693.3,171,747,181,800,176C853.3,171,907,149,960,154.7C1013.3,160,1067,192,1120,197.3C1173.3,203,1227,181,1280,160C1333.3,139,1387,117,1413,106.7L1440,96L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#9771D7" fillOpacity="1" d="M0,96L26.7,90.7C53.3,85,107,75,160,90.7C213.3,107,267,149,320,144C373.3,139,427,85,480,80C533.3,75,587,117,640,144C693.3,171,747,181,800,176C853.3,171,907,149,960,154.7C1013.3,160,1067,192,1120,197.3C1173.3,203,1227,181,1280,160C1333.3,139,1387,117,1413,106.7L1440,96L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z"></path></svg>
       
     </main>
   );

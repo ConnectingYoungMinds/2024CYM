@@ -1,0 +1,39 @@
+.carousel-container {
+  overflow: hidden;
+}
+
+.gallery {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: transform 10s ease;
+  animation: scroll 120s linear infinite; /* To make sure the carousel continues to move */
+}
+
+.gallery li {
+  flex: 0 0 auto;
+  width: calc(100% / 3); /* Display 3 images at a time */
+}
+
+
+
+.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+.imgCss{
+  border: 5rem;
+  border-radius: 2%;
+  
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
